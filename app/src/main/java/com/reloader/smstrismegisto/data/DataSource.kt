@@ -5,16 +5,11 @@ import com.reloader.smstrismegisto.vo.Resource
 
 class DataSource {
 
-    private val generateListDeMensajes = listOf(
+    val generateListDeMensajes = Resource.Success(listOf(
 
         Mensajes(10, "+519641548", "Kotlin"),
         Mensajes(11, "+5191212125", "iOS"),
         Mensajes(12, "+5112312344", "Flutter"),
         Mensajes(13, "+5658587900", "Java")
-    )
-
-    fun getMensajesList(): Resource<List<Mensajes>> {
-        return Resource.Success(generateListDeMensajes)
-    }
-
+    ))
 }

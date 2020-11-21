@@ -8,7 +8,7 @@ class RepoImpl(private val dataSource: DataSource) : Repo {
 
     override fun getMensajeslist(): Resource<List<Mensajes>> {
 
-        return dataSource.getMensajesList()
+        return dataSource.generateListDeMensajes
     }
 
 }
