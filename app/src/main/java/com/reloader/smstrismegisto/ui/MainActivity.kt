@@ -4,36 +4,38 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.reloader.smstrismegisto.R
+import com.reloader.smstrismegisto.data.DataSource
+import com.reloader.smstrismegisto.domain.RepoImpl
 import com.reloader.smstrismegisto.ui.modelo.Mensajes
-import com.reloader.smstrismegisto.viewmodel.MyViewModel
+import com.reloader.smstrismegisto.viewmodel.MainViewModel
+import com.reloader.smstrismegisto.viewmodel.VMFactory
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var viewModel: MyViewModel
+
+    private lateinit var viewModel: MainViewModel
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        setupViewModel()
 
-        viewModel = ViewModelProviders.of(this).get(MyViewModel::class.java)
-
-        val mensajesObserver = Observer<List<Mensajes>> {
-
-//            for((index, value) in it.withIndex()){
-//                Log.d("mensajes $index:", value.sms_mensaje) // 0:Kotlin , 1: iOS, 2: Flutter
-//            }
-
-
-//            for(mensaje in it){
-//                Log.d("listaMensajes", mensaje.sms_mensaje)
-//            } // result : Kotlin - iOS- Flutter- Java
-
-
-            Log.d("listaMensajes", it.toString()) // list complete
+        btn_crearLista.setOnClickListener {
+//            viewModel.getListMessages()
         }
+    }
 
-        viewModel.getListMensajesLiveData().observe(this, mensajesObserver)
+    private fun setupViewModel() {
+        viewModel = ViewModelProviders.of(this, VMFactory(RepoImpl(DataSource()))).get(MainViewModel::class.java)
+
+//        val mensajesObserver = Observer<List<Mensajes>> {
+//            Log.d("listaMensajes", it.toString()) // list complete
+//        }
+//        viewModel.getListMensajesLiveData().observe(this, mensajesObserver)
     }
 }
