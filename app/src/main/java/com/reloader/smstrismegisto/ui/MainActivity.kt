@@ -6,15 +6,17 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.reloader.smstrismegisto.R
 import com.reloader.smstrismegisto.data.DataSource
 import com.reloader.smstrismegisto.domain.RepoImpl
+import com.reloader.smstrismegisto.ui.modelo.Mensajes
 import com.reloader.smstrismegisto.viewmodel.MainViewModel
 import com.reloader.smstrismegisto.viewmodel.VMFactory
 import com.reloader.smstrismegisto.vo.Resource
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), MensajesRecyclerAdapter.OnMensajesClickListener {
 
 
     private lateinit var viewModel: MainViewModel
@@ -23,7 +25,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setupViewModel()
-
         btn_crearLista.setOnClickListener {
             //            viewModel.getListMessages()
         }
@@ -42,6 +43,11 @@ class MainActivity : AppCompatActivity() {
                 is Resource.Success -> {
 
                     Log.v("resultData", result.data.toString())
+                    rc_mensajes.layoutManager = LinearLayoutManager(applicationContext)
+                    rc_mensajes.setHasFixedSize(true)
+                    val mensajesRecyclerAdapter = MensajesRecyclerAdapter(result.data, this)
+                    rc_mensajes.adapter = mensajesRecyclerAdapter
+
                 }
                 is Resource.Failure -> {
                     Toast.makeText(
@@ -54,10 +60,12 @@ class MainActivity : AppCompatActivity() {
 
             }
         })
+    }
 
-//        val mensajesObserver = Observer<Resource<List<Mensajes>>> {
-//            Log.d("listaMensajes", it.toString()) // list complete
-//        }
-//        viewModel.fetchMensajesList.observe(this, mensajesObserver)
+    override fun onMensajesClick(
+        position: Int,
+        mensaje: List<Mensajes>
+    ) {
+        Toast.makeText(applicationContext, "position $position  ${mensaje.get(position).sms_mensaje}", Toast.LENGTH_SHORT).show()
     }
 }

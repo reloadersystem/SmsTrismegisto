@@ -4,5 +4,5 @@ import com.reloader.smstrismegisto.ui.modelo.Mensajes
 import com.reloader.smstrismegisto.vo.Resource
 
 interface Repo {
-    fun getMensajeslist():Resource<List<Mensajes>>
+    suspend fun getMensajeslist(): Resource<List<Mensajes>>
 }

@@ -6,9 +6,9 @@ import com.reloader.smstrismegisto.vo.Resource
 
 class RepoImpl(private val dataSource: DataSource) : Repo {
 
-    override fun getMensajeslist(): Resource<List<Mensajes>> {
+    override suspend fun getMensajeslist(): Resource<List<Mensajes>> {
 
-        return dataSource.generateListDeMensajes
+        return dataSource.getMensajesService()
     }
 
 }
