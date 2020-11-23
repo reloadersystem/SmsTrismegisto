@@ -2,6 +2,7 @@ package com.reloader.smstrismegisto.ui
 
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -39,9 +40,10 @@ class MainActivity : AppCompatActivity(), MensajesRecyclerAdapter.OnMensajesClic
 
                 is Resource.Loading -> {
                     Log.v("chargeProgress", "ejecutar progress")
+                    progressBar.visibility = View.VISIBLE
                 }
                 is Resource.Success -> {
-
+                    progressBar.visibility = View.GONE
                     Log.v("resultData", result.data.toString())
                     rc_mensajes.layoutManager = LinearLayoutManager(applicationContext)
                     rc_mensajes.setHasFixedSize(true)
@@ -50,6 +52,7 @@ class MainActivity : AppCompatActivity(), MensajesRecyclerAdapter.OnMensajesClic
 
                 }
                 is Resource.Failure -> {
+                    progressBar.visibility = View.GONE
                     Toast.makeText(
                         this,
                         "Ocurrior un error al traer los datos ${result.exception}",

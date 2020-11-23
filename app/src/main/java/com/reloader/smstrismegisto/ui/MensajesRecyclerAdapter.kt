@@ -40,7 +40,7 @@ class MensajesRecyclerAdapter(
 
     }
 
-    inner class MyViewHolderSms(val view: View) :
+    inner class MyViewHolderSms(view: View) :
         RecyclerView.ViewHolder(view) {
 
         val id: TextView = itemView.findViewById(R.id.txt_id)
