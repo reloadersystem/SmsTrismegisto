@@ -1,7 +1,7 @@
-package com.reloader.smstrismegisto.vo
+package com.reloader.smsworkmanager.vo
 
 import com.google.gson.GsonBuilder
-import com.reloader.smstrismegisto.domain.Servicios.WebService
+import com.reloader.smsworkmanager.domain.Servicios.WebService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 

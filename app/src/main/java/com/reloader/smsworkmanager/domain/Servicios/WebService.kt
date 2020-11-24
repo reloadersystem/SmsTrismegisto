@@ -1,6 +1,6 @@
-package com.reloader.smstrismegisto.domain.Servicios
+package com.reloader.smsworkmanager.domain.Servicios
 
-import com.reloader.smstrismegisto.ui.modelo.MensajesList
+import com.reloader.smsworkmanager.ui.modelo.MensajesList
 import retrofit2.http.GET
 
 interface WebService {

@@ -1,4 +1,4 @@
-package com.reloader.smstrismegisto
+package com.reloader.smsworkmanager
 
 import org.junit.Test
 

@@ -1,4 +1,4 @@
-package com.reloader.smstrismegisto
+package com.reloader.smsworkmanager
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

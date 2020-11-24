@@ -1,12 +1,12 @@
-package com.reloader.smstrismegisto.ui
+package com.reloader.smsworkmanager.ui
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.reloader.smstrismegisto.R
-import com.reloader.smstrismegisto.ui.modelo.Mensajes
+import com.reloader.smsworkmanager.R
+import com.reloader.smsworkmanager.ui.modelo.Mensajes
 
 
 class MensajesRecyclerAdapter(

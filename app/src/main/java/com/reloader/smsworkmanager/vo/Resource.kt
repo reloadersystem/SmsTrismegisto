@@ -1,4 +1,4 @@
-package com.reloader.smstrismegisto.vo
+package com.reloader.smsworkmanager.vo
 
 sealed class Resource<out T> {
     class Loading<out T> : Resource<T>()
